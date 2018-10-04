@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>Babylon.js - Heightmap demo</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <script src="lib/cannon.js"></script>
+    <script src="lib/babylon.js"></script>
+    <script src="lib/babylonjs.loaders.min.js"></script>
+    <script src="js/meshList.js"></script>
+    <script src="js/GAME_CONTROLS.js"></script>
+    <script src="js/Scene.js"></script>
+    <script src="js/initGame.js"></script>
+</head>
+<body>
+    <svg viewBox="0 0 200 100">
+        <clipPath id="myClip">
+            <!--
+            Everything outside the circle will be
+            clipped and therefor invisible.
+            -->
+            <circle cx="40" cy="35" r="35" />
+        </clipPath>
+        <!-- The original black heart for reference -->
+        <path id="trap" d="M15,0
+        L185,0
+        L200,100
+        L0,100z" fill="green"></path>
+        <!--
+        Only the portion of the red heart
+        inside the clip circle is visible.
+        -->
+        <use clip-path="url(#myClip)" xlink:href="#trap" fill="red" />
+    </svg>
+    <canvas id="BABYLON_GAME" touch-action="none"></canvas>
+</body>
+</html>
