@@ -7,13 +7,16 @@
     <script src="lib/cannon.js"></script>
     <script src="lib/babylon.js"></script>
     <script src="lib/babylonjs.loaders.min.js"></script>
+    <script src="lib/d3-dispatch.v1.min.js"></script>
+    <script src="lib/d3-selection.v1.min.js"></script>
+    <script src="lib/d3-drag.v1.min.js"></script>
     <script src="js/meshList.js"></script>
     <script src="js/GAME_CONTROLS.js"></script>
     <script src="js/Scene.js"></script>
     <script src="js/initGame.js"></script>
 </head>
 <body>
-    <svg viewBox="0 0 200 100">
+    <svg id="svg" viewBox="0 0 200 100">
         <clipPath id="myClip">
             <!--
             Everything outside the circle will be
