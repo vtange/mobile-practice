@@ -16,12 +16,19 @@
     <script src="js/initGame.js"></script>
 </head>
 <body>
-    <svg id="svg" class="">
+    <svg id="svg">
+        <defs>
+        <radialGradient id="exampleGradient">
+            <stop offset="5%" stop-color="rgba(255,180,95,0.7)"/>
+            <stop offset="20%" stop-color="rgba(220,130,55,0.4)"/>
+            <stop offset="95%" stop-color="transparent"/>
+        </radialGradient>
+        </defs>
         <clipPath id="myClip">
             <rect width="100%" height="100%" rx="20" ry="20"></rect>
         </clipPath>
         <rect width="100%" height="100%" rx="20" ry="20" style="stroke:goldenrod;stroke-width:1;stroke-opacity:0.9" fill="rgba(160,150,140,0.2)"></rect>
-        <circle id="fngr" r="15" fill="white" clip-path="url(#myClip)"/>
+        <circle id="fngr" r="120%" fill="url(#exampleGradient)" clip-path="url(#myClip)"/>
     </svg>
     <canvas id="BABYLON_GAME" touch-action="none"></canvas>
 </body>

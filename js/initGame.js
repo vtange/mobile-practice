@@ -18,21 +18,22 @@ document.addEventListener("DOMContentLoaded", function () {
 	var svg = document.getElementById("svg");
 	var fngr = document.getElementById("fngr");
 	const svgdims = svg.getBoundingClientRect();
-	const svgW = svgdims.width;
-	const svgH = svgdims.height;
 	const svgTop = svgdims.top;
 	const svgLef = svgdims.left;
 
 	d3.select(svg).call(
 		d3.drag()
-		.on("start",function(){console.log("start");})
-		.on("drag",function(){
-			var mousX = d3.event.x-svgLef;
-			var mousY = d3.event.y-svgTop;
-			console.log(mousX,mousY);
-			fngr.setAttribute("cx",mousX);
-			fngr.setAttribute("cy",mousY);
+		.on("start",function(){
+			fngr.setAttribute("cx",d3.event.x-svgLef);
+			fngr.setAttribute("cy",d3.event.y-svgTop);
+			fngr.style.opacity = 1;
 		})
-		.on("end",function(){console.log("end");})
+		.on("drag",function(){
+			fngr.setAttribute("cx",d3.event.x-svgLef);
+			fngr.setAttribute("cy",d3.event.y-svgTop);
+		})
+		.on("end",function(){
+			fngr.style.opacity = 0;
+		})
 	);
 }, false);

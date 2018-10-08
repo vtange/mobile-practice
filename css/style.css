@@ -13,16 +13,18 @@
     }
     svg {
         position: absolute;
-        width:87vw;
+        width:80vw;
         height:20vh;
-        max-width: 100%;
+        max-height: 400px;
+        max-width: 600px;
+        min-height: 180px;
+        min-width: 300px;
         bottom: 2px;
         left:50%;
         transform: translateX(-50%);
     }
 
-    .panel {
-        /* rotate just rotates, perspective shrinks furthest edge*/
-        transform: perspective(1000px) rotateX(30deg);
-        transform-origin: bottom;
+    #fngr {
+        transition: opacity 0.2s ease-out;
+        opacity: 0;
     }
