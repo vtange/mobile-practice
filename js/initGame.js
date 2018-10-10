@@ -45,14 +45,13 @@ document.addEventListener("DOMContentLoaded", function () {
 			rect.setAttribute("y",y);
 		})
 		.on("end",function(){
-			console.log(iX);
-			console.log(iY);
+			var element = document.createTextNode(iX+","+iY+"____");
+			document.body.appendChild(element);
 		})
 	);
 
 	window.ondevicemotion = function(event) {
-		 event.accelerationIncludingGravity.x
-		 event.accelerationIncludingGravity.y
-		 event.accelerationIncludingGravity.z
+		var element = document.createTextNode(event.accelerationIncludingGravity.x+","+event.accelerationIncludingGravity.y+"____");
+		document.body.appendChild(element);
 	}
 }, false);

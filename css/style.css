@@ -5,6 +5,7 @@
         margin: 0;
         overflow: hidden;
         background: black;
+        color:white;
     }
     #BABYLON_GAME {
         width: 100%;
