@@ -4,6 +4,7 @@
         padding: 0;
         margin: 0;
         overflow: hidden;
+        background: black;
     }
     #BABYLON_GAME {
         width: 100%;
@@ -11,7 +12,7 @@
         margin: 0px;
         padding: 0px;
     }
-    svg {
+    #svg {
         position: absolute;
         width:80vw;
         height:20vh;
@@ -27,4 +28,10 @@
     #fngr {
         transition: opacity 0.2s ease-out;
         opacity: 0;
+    }
+
+    #shakecharge {
+        position: absolute;
+        width:100vw;
+        height:100vh;
     }

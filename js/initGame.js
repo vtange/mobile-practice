@@ -9,12 +9,18 @@ document.addEventListener("DOMContentLoaded", function () {
     if (support && canvas) {
 
 		var game_core = new Scene(canvas);
-		game_core.loadMap(library_f2);
+		//game_core.loadMap(library_f2);
     }
 	else
 	{
 		//write non-supported error on #BABYLON_GAME
 	}
+
+
+	////////////
+	//touchpad//
+	////////////
+	/*
 	var svg = document.getElementById("svg");
 	var fngr = document.getElementById("fngr");
 	const svgdims = svg.getBoundingClientRect();
@@ -36,4 +42,32 @@ document.addEventListener("DOMContentLoaded", function () {
 			fngr.style.opacity = 0;
 		})
 	);
+	*/
+	///////////////
+	//shakecharge//
+	///////////////
+	var rect = document.getElementById("shakecharger");
+	var iX = 0;
+	var iY = 0;
+	d3.select(rect).call(
+		d3.drag()
+		.on("drag",function(){
+			var x = parseInt(rect.getAttribute("x"),10) + d3.event.dx;
+			var y = parseInt(rect.getAttribute("y"),10) + d3.event.dy;
+			iX += Math.abs(d3.event.dx);
+			iY += Math.abs(d3.event.dy);
+			rect.setAttribute("x",x);
+			rect.setAttribute("y",y);
+		})
+		.on("end",function(){
+			console.log(iX);
+			console.log(iY);
+		})
+	);
+
+	window.ondevicemotion = function(event) {
+		 event.accelerationIncludingGravity.x
+		 event.accelerationIncludingGravity.y
+		 event.accelerationIncludingGravity.z
+	}
 }, false);
