@@ -45,13 +45,17 @@ document.addEventListener("DOMContentLoaded", function () {
 			rect.setAttribute("y",y);
 		})
 		.on("end",function(){
-			var element = document.createTextNode(iX+","+iY+"____");
+			var element = document.createTextNode(iX+","+iY);
+			var br = document.createElement("br");
 			document.body.appendChild(element);
+			document.body.appendChild(br);
 		})
 	);
 
 	window.ondevicemotion = function(event) {
-		var element = document.createTextNode(event.accelerationIncludingGravity.x+","+event.accelerationIncludingGravity.y+"____");
+		var element = document.createTextNode(event.accelerationIncludingGravity.x+","+event.accelerationIncludingGravity.y);
+		var br = document.createElement("br");
 		document.body.appendChild(element);
+		document.body.appendChild(br);
 	}
 }, false);
