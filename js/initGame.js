@@ -36,6 +36,12 @@ document.addEventListener("DOMContentLoaded", function () {
 	var iY = 0;
 	d3.select(rect).call(
 		d3.drag()
+		.on("start",function(){
+			window.ondevicemotion = function(event) {
+				iX += Math.abs(event.accelerationIncludingGravity.x);
+				iY += Math.abs(event.accelerationIncludingGravity.y);
+			}
+		})
 		.on("drag",function(){
 			var x = parseInt(rect.getAttribute("x"),10) + d3.event.dx;
 			var y = parseInt(rect.getAttribute("y"),10) + d3.event.dy;
@@ -49,13 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 			var br = document.createElement("br");
 			document.body.appendChild(element);
 			document.body.appendChild(br);
+			window.ondevicemotion = null;
 		})
 	);
-
-	window.ondevicemotion = function(event) {
-		var element = document.createTextNode(event.accelerationIncludingGravity.x+","+event.accelerationIncludingGravity.y);
-		var br = document.createElement("br");
-		document.body.appendChild(element);
-		document.body.appendChild(br);
-	}
 }, false);
