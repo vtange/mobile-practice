@@ -32,8 +32,14 @@ document.addEventListener("DOMContentLoaded", function () {
 	//shakecharge//
 	///////////////
 	var rect = document.getElementById("shakecharger");
+	var cord = document.getElementById("cord");
 	var iX = 0;
 	var iY = 0;
+	const rectDims = rect.getBoundingClientRect();
+	const rWidth = rectDims.width;
+	const rHeight = rectDims.height;
+	const wWidth = window.innerWidth-400;
+	const wHeight = window.innerHeight-400;
 	d3.select(rect).call(
 		d3.drag()
 		.on("start",function(){
@@ -43,12 +49,14 @@ document.addEventListener("DOMContentLoaded", function () {
 			}
 		})
 		.on("drag",function(){
-			var x = parseInt(rect.getAttribute("x"),10) + d3.event.dx;
-			var y = parseInt(rect.getAttribute("y"),10) + d3.event.dy;
+			var x = Math.max(0, Math.min( parseInt(rect.getAttribute("x"),10) + d3.event.dx, wWidth));
+			var y = Math.max(0, Math.min( parseInt(rect.getAttribute("y"),10) + d3.event.dy, wHeight));
 			iX += Math.abs(d3.event.dx);
 			iY += Math.abs(d3.event.dy);
 			rect.setAttribute("x",x);
 			rect.setAttribute("y",y);
+			cord.setAttribute("x2",x+rWidth/2);
+			cord.setAttribute("y2",y+rHeight/2);
 		})
 		.on("end",function(){
 			var element = document.createTextNode(iX+","+iY);
