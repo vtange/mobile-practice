@@ -67,3 +67,15 @@ document.addEventListener("DOMContentLoaded", function () {
 		})
 	);
 }, false);
+
+//Service Worker
+if ('serviceWorker' in navigator) {
+	navigator.serviceWorker.register('/sw-test/sw.js', {scope: '/sw-test/'})
+	.then(function(reg) {
+	  // registration worked
+	  console.log('Registration succeeded. Scope is ' + reg.scope);
+	}).catch(function(error) {
+	  // registration failed
+	  console.log('Registration failed with ' + error);
+	});
+}
