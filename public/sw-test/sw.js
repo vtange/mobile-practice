@@ -1,6 +1,6 @@
 const cacheName = 'v1';
 const cacheFiles = [
-    '/',
+    './',
     '/css/style.css',
     '/js/initGame.js',
     '/lib/d3-dispatch.v1.min.js',
