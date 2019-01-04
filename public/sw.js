@@ -28,7 +28,7 @@ self.addEventListener('activate', function(event) {
         .then(function(cacheNames){
             return Promise.all(cacheNames.map(function(thisCacheName){
                 if(thisCacheName !== cacheName){
-                    console.log('SW Removing cached files from', thisCacheName);
+                    console.log('SW Removing obsolete cached files from', thisCacheName);
                     return caches.delete(thisCacheName);
                 }
             }))
@@ -47,8 +47,14 @@ self.addEventListener('fetch', function(event) {
     event.respondWith(
         caches.match(event.request)
         .then(function(response){
-            console.log('Fetching new files');
-            return response || fetch(event.request);
+            console.log(response ? 'Got Files from cache' : 'Fetching new files');
+            return response || fetch(event.request).then(function(response){
+                //got file from fetch operation
+                console.log(response);
+            }).catch(function(err){
+                //error fetching file
+                throw err;
+            });
         })
     );
 });
