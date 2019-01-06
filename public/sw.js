@@ -15,7 +15,13 @@ self.addEventListener('install', function(event) {
         caches.open(cacheName)
         .then(function(cache){
             console.log('SW caching cachefiles');
-            return cache.addAll(cacheFiles);
+            return cache.addAll(cacheFiles).then(function(response){
+                //got file from fetch operation
+                console.log(response);
+            }).catch(function(err){
+                //error fetching file
+                throw err;
+            });;
         })
     )
 });
