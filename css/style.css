@@ -12,24 +12,6 @@
         margin: 0px;
         padding: 0px;
     }
-    #svg {
-        position: absolute;
-        width:80vw;
-        height:20vh;
-        max-height: 400px;
-        max-width: 600px;
-        min-height: 180px;
-        min-width: 300px;
-        bottom: 2px;
-        left:50%;
-        transform: translateX(-50%);
-    }
-
-    #fngr {
-        transition: opacity 0.2s ease-out;
-        opacity: 0;
-    }
-
     #shakecharge {
         position: absolute;
         width:100vw;

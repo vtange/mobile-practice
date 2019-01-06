@@ -38,8 +38,8 @@ document.addEventListener("DOMContentLoaded", function () {
 	const rectDims = rect.getBoundingClientRect();
 	const rWidth = rectDims.width;
 	const rHeight = rectDims.height;
-	const wWidth = window.innerWidth-400;
-	const wHeight = window.innerHeight-400;
+	const wWidth = window.innerWidth;
+	const wHeight = window.innerHeight;
 	d3.select(rect).call(
 		d3.drag()
 		.on("start",function(){
