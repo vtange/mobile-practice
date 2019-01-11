@@ -10,11 +10,11 @@ const cacheFiles = [
 
 // Install event
 self.addEventListener('install', function(event) {
-    console.log("SW installed");
+    console.log("SW:INSTALL");
     event.waitUntil(
         caches.open(cacheName)
         .then(function(cache){
-            console.log('SW caching cachefiles');
+            console.log('SW caching:', cacheFiles, cacheName);
             return cache.addAll(cacheFiles).then(function(response){
                 //got file from fetch operation
                 console.log(response);
@@ -28,7 +28,7 @@ self.addEventListener('install', function(event) {
 
 // Activate event
 self.addEventListener('activate', function(event) {
-    console.log("SW activated");
+    console.log("SW:ACTIVATE");
     event.waitUntil(
         caches.keys()
         .then(function(cacheNames){
@@ -49,11 +49,11 @@ self.addEventListener('push', function(event) {
 
 // Fetch event
 self.addEventListener('fetch', function(event) {
-    console.log("SW fetching", event.request.url);
+    console.log("SW:FETCH", event.request.url);
     event.respondWith(
         caches.match(event.request)
         .then(function(response){
-            console.log(response ? 'Got Files from cache' : 'Fetching new files');
+            console.log(response ? 'Got Files from cache' : 'Fetching new files', response ? response : "");
             return response || fetch(event.request).then(function(response){
                 //got file from fetch operation
                 console.log(response);
